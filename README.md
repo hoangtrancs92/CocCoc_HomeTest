@@ -21,4 +21,5 @@ This project is a simple PHP-based application designed.
 3. Run tests individually: `php tests/<TestFile>.php` (e.g., `php tests/Services/OrderServiceTest.php`).
 
 ## Future Development
-- **Validation**: Implement data validation to ensure:
+If more time is available, the following feature could be added later:  
+- **Validation**: Add checks to ensure data (like product dimensions, weight, and quantities) is valid and reasonable.
