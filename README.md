@@ -8,7 +8,7 @@
 - **LinkedIn**: [www.linkedin.com/in/tranhoang-working](https://www.linkedin.com/in/tranhoang-working)  
 
 ## Project Overview
-This project is a simple PHP-based application designed to calculate the gross price of an order for a shipping service that helps Vietnamese customers buy products from Amazon. It processes product details (price, weight, dimensions) provided via Amazon URLs and computes shipping fees and totals based on configurable coefficients.
+This project is a simple PHP-based application designed.
 
 ### Key Features
 - Use PHP 7.4.33 (cli)
