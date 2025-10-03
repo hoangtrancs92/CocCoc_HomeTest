@@ -2,33 +2,31 @@
 
 namespace App\Services;
 
-use App\Config\Common;
 use App\Helpers\CalculatorFeeHelper;
 use App\Models\Product;
 
 class ShipmentFeeService
 {
     private Product $product;
+    private CalculatorFeeHelper $calculatorFeeHelper;
 
-    public function __construct(Product $product)
+    public function __construct(Product $product, CalculatorFeeHelper $calculatorFeeHelper)
     {
         $this->product = $product;
+        $this->calculatorFeeHelper = $calculatorFeeHelper;
     }
 
     /**
-     * Calculate the shipment fee another type of shipment
+     * Calculate the shipment fee based on weight, dimensions, and product type
      *
      * @return float
      */
-    public function shipmentFee()
+    public function shipmentFee(): float
     {
-        $common = new Common();
-        $calculatorFeeHelper = new CalculatorFeeHelper($common);
-
         return max(
-            $calculatorFeeHelper->weightFee($this->product),
-            $calculatorFeeHelper->dimensionFee($this->product),
-            $calculatorFeeHelper->productTypeFee($this->product),
+            $this->calculatorFeeHelper->weightFee($this->product),
+            $this->calculatorFeeHelper->dimensionFee($this->product),
+            $this->calculatorFeeHelper->productTypeFee($this->product),
         );
     }
 }

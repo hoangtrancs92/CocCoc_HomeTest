@@ -4,6 +4,9 @@ namespace App\Config;
 
 class Common
 {
+    private const WEIGHT_COEFFICIENT = 11;
+    private const DIMENSION_COEFFICIENT = 11;
+
     /**
      * Retrieves the coefficient based on the given parameter.
      *
@@ -12,11 +15,11 @@ class Common
      */
     public function getCoefficient(string $params): float
     {
-        $array = [
-            'weightCoefficient' => 11,
-            'dimensionCoefficient' => 11,
+        $coefficients = [
+            'weightCoefficient' => self::WEIGHT_COEFFICIENT,
+            'dimensionCoefficient' => self::DIMENSION_COEFFICIENT,
         ];
 
-        return $array[$params];
+        return $coefficients[$params];
     }
 }
