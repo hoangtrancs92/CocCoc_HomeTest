@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Config\Common;
+use App\Helpers\CalculatorFeeHelper;
 use App\Models\{
     Order,
     OrderDetail,
@@ -9,6 +11,14 @@ use App\Models\{
 
 class OrderService
 {
+    private CalculatorFeeHelper $calculatorFeeHelper;
+
+    public function __construct()
+    {
+        $common = new Common();
+        $this->calculatorFeeHelper = new CalculatorFeeHelper($common);
+    }
+
     /**
      * Creates an order from a list of products and their quantities.
      *
@@ -23,7 +33,7 @@ class OrderService
         foreach ($productsWithQuantities as $item) {
             $product = $item['product'];
             $quantity = $item['quantity'];
-            $shipmentFeeService = new ShipmentFeeService($product);
+            $shipmentFeeService = new ShipmentFeeService($product, $this->calculatorFeeHelper);
             $shipmentFee = $shipmentFeeService->shipmentFee();
             $orderDetails[] = new OrderDetail(
                 $detailId++,
